@@ -8,16 +8,16 @@ if ($_GET['url']) {
     $command = "wkhtmltopdf " . $_GET['url'] . " $file_url";
     exec($command);
 
-    //if (file_exists($file_url)) {
+    if (file_exists($file_url)) {
         //File Download magic
         header('Content-Type: application/octet-stream');
         header("Content-Transfer-Encoding: Binary");
-        header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
+        header("Content-disposition: attachment; filename=\"output.pdf\"");
         readfile($file_url);
         unlink($file_url);
-    //} else {
-        //echo "hubo un error! :(";
-    //}
+    } else {
+        echo "hubo un error! :(";
+    }
 
 }
 
