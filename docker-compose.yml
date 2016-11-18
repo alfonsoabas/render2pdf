@@ -1,5 +1,11 @@
 main:
-    build: .
+    build: nginx
     ports:
         - "80:80"
         - "443:443"
+    links:
+        - fpm
+fpm:
+    build: fpm
+    expose:
+        - "9000"
