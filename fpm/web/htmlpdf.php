@@ -1,7 +1,7 @@
 <?php
 
 if ($_GET['url']) {
-    $random = 3;
+    $random = rand();
 
     $file_url = "/var/www/html/pdfs/output$random.pdf";
 
