@@ -3,6 +3,7 @@ MAINTAINER Kenan Rhoton
 RUN echo http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
 RUN apk add --no-cache wkhtmltopdf
 RUN apk add --no-cache xvfb ttf-freefont fontconfig dbus
+RUN apk add --no-cache mesa-dri-swrast
 RUN mv /usr/bin/wkhtmltopdf /usr/bin/wkhtmltopdf-origin
 COPY scripts/wkhtmlwrapper.sh /usr/bin/wkhtmltopdf
 RUN chmod +x /usr/bin/wkhtmltopdf
