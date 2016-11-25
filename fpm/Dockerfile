@@ -3,6 +3,13 @@ MAINTAINER Kenan Rhoton
 RUN apt-get update
 RUN apt-get install -y xvfb ttf-freefont fontconfig dbus
 RUN apt-get install -y wkhtmltopdf
+
+# Needed for the base62 encoding and decoding
+RUN apt-get install -y libgmp-dev
+RUN ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h
+RUN docker-php-ext-install gmp
+
+# Wrap the wkhtmltopdf executable to run in a framebuffer
 RUN mv /usr/bin/wkhtmltopdf /usr/bin/wkhtmltopdf-origin
 COPY scripts/wkhtmlwrapper.sh /usr/bin/wkhtmltopdf
 RUN chmod +x /usr/bin/wkhtmltopdf

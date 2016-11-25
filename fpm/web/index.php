@@ -1,12 +1,23 @@
 <?php
 
-if ($_POST['url']) {
+require 'decoder.php';
+
+if ($_REQUEST['url']) {
+
+    $url = "";
+
+    if ($_GET['url']) {
+        $url = base62decode($_GET['url']);
+    } else {
+        $url = $_POST['url'];
+    }
+
     $random = rand();
 
     $file_url = "/var/www/html/pdfs/output$random.pdf";
 
     set_time_limit(500);
-    $command = "wkhtmltopdf -q \"" . $_POST['url'] . "\" $file_url";
+    $command = "wkhtmltopdf -q \"" . $url . "\" $file_url";
     exec($command);
 
     if (file_exists($file_url)) {
@@ -22,13 +33,13 @@ if ($_POST['url']) {
 
 } else {
     echo '<html>
-       <body>
-          <form action="" method="POST">
-             <input type="text" name="url" placeholder="http://someplace.com"/>
-             <input type="submit"/>
-          </form>
-       </body>
-    </html>';
+        <body>
+        <form action="" method="POST">
+        <input type="text" name="url" placeholder="http://someplace.com"/>
+        <input type="submit"/>
+        </form>
+        </body>
+        </html>';
 }
 
 ?>
