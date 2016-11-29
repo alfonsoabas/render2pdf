@@ -15,7 +15,7 @@ if ($_REQUEST['url']) {
     $random = rand();
 
     $file_url = "/var/www/html/pdfs/output$random.pdf";
-
+echo $url;
     set_time_limit(500);
     $command = "wkhtmltopdf -q \"" . $url . "\" $file_url";
     exec($command);
