@@ -18,7 +18,7 @@ if ($_REQUEST['url']) {
 echo $url;
     set_time_limit(500);
     $command = "wkhtmltopdf -q \"" . $url . "\" $file_url";
-    exec($command);
+    //exec($command);
 
     if (file_exists($file_url)) {
         //File Download magic
