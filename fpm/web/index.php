@@ -7,7 +7,7 @@ if ($_REQUEST['url']) {
     $url = "";
 
     if ($_GET['url']) {
-        $url = base32_decode($_GET['url']);
+        $url = Base32::decode($_GET['url']);
     } else {
         $url = $_POST['url'];
     }
