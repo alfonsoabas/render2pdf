@@ -7,7 +7,7 @@ if ($_REQUEST['url']) {
     $url = "";
 
     if ($_GET['url']) {
-        $url = Base32::decode($_GET['url']);
+        $url = base32_decode($_GET['url']);
     } else {
         $url = $_POST['url'];
     }
@@ -15,10 +15,10 @@ if ($_REQUEST['url']) {
     $random = rand();
 
     $file_url = "/var/www/html/pdfs/output$random.pdf";
-echo $url;
+
     set_time_limit(500);
     $command = "wkhtmltopdf -q \"" . $url . "\" $file_url";
-    //exec($command);
+    exec($command);
 
     if (file_exists($file_url)) {
         //File Download magic
