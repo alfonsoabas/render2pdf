@@ -18,8 +18,8 @@ if ($_REQUEST['url']) {
 
     set_time_limit(500);
     $command = "wkhtmltopdf -q \"" . $url . "\" $file_url";
-    exec($command);
-
+    //exec($command);
+echo $command;
     if (file_exists($file_url)) {
         //File Download magic
         header('Content-Type: application/octet-stream');
