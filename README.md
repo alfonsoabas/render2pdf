@@ -1,6 +1,6 @@
 # Render2PDF
 
-## Installation
+## Installation.
 
 Install Docker and then run:
 
